@@ -1,0 +1,57 @@
+PhotosController
+  Only a "show" for now
+
+
+
+
+Photo (has_many tags)
+  title
+  link (local (or hard-coded) at first, amazon aws later)
+
+Tag (belongs_to user, belongs_to photo)
+  photo_id
+  user_id
+  photo_x
+  photo_y
+  character_name
+
+User (has_many tags)
+  user_name
+  email
+  password
+
+
+
+
+Photo Views
+  Show
+    title
+    big photo
+      user click (jQuery click listener)
+        create new, absolutely positioned targeting boxes surrounding the click area
+        dropdown with character names
+        when user selects one, the tag is created w/ character name (jQuery click listener)
+        tags are visible on hover, invisible outside of pic
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ###

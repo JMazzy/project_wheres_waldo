@@ -1,0 +1,17 @@
+
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: waldo_dev
+
+test:
+  <<: *default
+  database: waldo_test
+
+production:
+  <<: *default
+  database: waldo
