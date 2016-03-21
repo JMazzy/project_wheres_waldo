@@ -1,30 +1,16 @@
 var WALDO = WALDO || {};
 
 WALDO.photoTagModule = ( function() {
-  var registerListeners = function() {
-    $('.photo-holder').on("click", "#photo", function(e) {
-      var offset = $("#photo").offset();
-      var x = e.pageX - offset.left
-      var y = e.pageY - offset.top
-      createTag(x,y);
-      console.log(x,y)
-    });
-
-    $("#photo").on("mouseover", function(e) {
-      $(".tag").removeClass("hidden");
-    });
-
-    $("#photo").on("mouseout", function(e) {
-      $(".tag").addClass("hidden");
-    });
-  };
-
   var createTag = function(x,y) {
     // create new elements
     var $newTag = $("<div class='tag'></div>");
     var $tagBox = $("<div class='tag-box'></div>")
-    var $tagLabel = $("<div class='tag-label'></div>")
+    var $tagLabel = $("<div class='tag-label hidden'></div>")
     var $tagMenu = $("<div class='tag-menu'></div>")
+
+    $tagMenu.append($("<p class='tag-menu-item'>Waldo</p>"))
+    $tagMenu.append($("<p class='tag-menu-item'>Wenda</p>"))
+    $tagMenu.append($("<p class='tag-menu-item'>Wizard Whitebeard</p>"))
 
     //combine new elements under tag
     $newTag.append($tagBox);
@@ -36,18 +22,9 @@ WALDO.photoTagModule = ( function() {
 
     // append new tag to the photo holder
     $('.photo-holder').append($newTag[0]);
-
-    console.log('createTag running');
-    console.log($newTag[0]);
   };
 
   return {
-    registerListeners: registerListeners,
+    createTag: createTag,
   }
 })();
-
-$( document ).ready( function() {
-  if ( $("#photos-show").length ) {
-    WALDO.photoTagModule.registerListeners();
-  }
-});
