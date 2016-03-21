@@ -4,6 +4,7 @@ WALDO.listenerModule = ( function() {
   var registerListeners = function() {
     $('.photo-holder').on("click", function(e) {
       if ( $(e.target).attr('id') === "photo" ) {
+        $(".tag-temp").remove();
         var offset = $("#photo").offset();
         var x = e.pageX - offset.left
         var y = e.pageY - offset.top
@@ -12,8 +13,10 @@ WALDO.listenerModule = ( function() {
         var $menuChoice = $(e.target);
         var choiceString = $menuChoice.text();
         $menuChoice.parent().addClass("hidden");
-        
-        $label = $menuChoice.parent().parent().find(".tag-label");
+
+        $tag = $menuChoice.parent().parent();
+        $tag.removeClass("tag-temp");
+        $label = $tag.find(".tag-label");
         $label.removeClass("hidden");
         $label.text(choiceString);
       }
