@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321123744) do
+ActiveRecord::Schema.define(version: 20160321130742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20160321123744) do
   end
 
   add_index "characters", ["name"], name: "index_characters_on_name", unique: true, using: :btree
+
+  create_table "photo_characters", force: :cascade do |t|
+    t.integer  "photo_id",     null: false
+    t.integer  "character_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "photo_characters", ["photo_id", "character_id"], name: "index_photo_characters_on_photo_id_and_character_id", unique: true, using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "title"
