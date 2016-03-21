@@ -36,7 +36,8 @@ class TagsController < ApplicationController
     params.require(:tag).permit(  :photo_id,
                                   :character_id,
                                   :photo_x,
-                                  :photo_y
+                                  :photo_y,
+                                  :game_id
     )
   end
 

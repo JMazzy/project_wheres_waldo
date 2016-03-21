@@ -23,7 +23,7 @@ WALDO.GameModule = ( function() {
         console.log("COMPLETE");
       },
     });
-  }
+  };
 
   var finishGame = function() {
     $.ajax({
@@ -43,10 +43,15 @@ WALDO.GameModule = ( function() {
         console.log("COMPLETE");
       },
     });
-  }
+  };
+
+  var getCurrentGame = function() {
+    return currentGame;
+  };
 
   return {
     startGame: startGame,
     finishGame: finishGame,
+    getCurrentGame: getCurrentGame,
   };
-});
+})();

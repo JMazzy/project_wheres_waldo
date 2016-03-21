@@ -51,10 +51,12 @@ ActiveRecord::Schema.define(version: 20160321210542) do
     t.integer  "character_id", null: false
     t.integer  "photo_x"
     t.integer  "photo_y"
+    t.integer  "game_id",      null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   add_index "tags", ["character_id", "photo_id"], name: "index_tags_on_character_id_and_photo_id", using: :btree
+  add_index "tags", ["game_id"], name: "index_tags_on_game_id", using: :btree
 
 end
