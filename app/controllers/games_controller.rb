@@ -29,6 +29,7 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
+    @game.end_time = Time.now;
 
     if @game.update(game_params)
       flash[:success] = "Game complete!"
@@ -54,12 +55,6 @@ class GamesController < ApplicationController
       end
     end
 
-  end
-
-  private
-
-  def game_params
-    params.require(:game).permit(:end_time)
   end
 
 end
