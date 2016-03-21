@@ -14,8 +14,6 @@ $tag-box-size: 64px;
   position: absolute;
   left: 0px;
   top: 0px;
-  pointer-events: none;
-  border: 1px solid black;
 }
 
 .tag-box {
@@ -40,10 +38,10 @@ $tag-box-size: 64px;
   padding: 2px;
   font-family: sans-serif;
   font-weight: bold;
+  border-radius: 5px;
 }
 
 .tag-menu {
-  pointer-events: auto;
   position: absolute;
   left: -$tag-box-size/2;
   top: $tag-box-size/2;
@@ -53,10 +51,14 @@ $tag-box-size: 64px;
   font-size: 20px;
   line-height: 20px;
   padding: 2px;
+  border-radius: 5px;
 }
 
 .tag-menu-item {
-  background-color: rgba(250,250,250,0.5);
+  background-color: rgba(250,250,250,0.0);
+  padding: 0 2px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .tag-menu-item:hover {

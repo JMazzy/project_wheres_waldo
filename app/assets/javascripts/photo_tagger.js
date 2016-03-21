@@ -5,8 +5,8 @@ WALDO.photoTagModule = ( function() {
     // create new elements
     var $newTag = $("<div class='tag'></div>");
     var $tagBox = $("<div class='tag-box'></div>")
-    var $tagLabel = $("<div class='tag-label hidden'></div>")
     var $tagMenu = $("<div class='tag-menu'></div>")
+    var $tagLabel = $("<div class='tag-label hidden'></div>")
 
     $tagMenu.append($("<p class='tag-menu-item'>Waldo</p>"))
     $tagMenu.append($("<p class='tag-menu-item'>Wenda</p>"))
