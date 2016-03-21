@@ -6,7 +6,7 @@ class CreateTags < ActiveRecord::Migration
       t.integer :photo_x
       t.integer :photo_y
 
-      t.index [:character_id, :photo_id], unique: true
+      t.index [:character_id, :photo_id]
 
       t.timestamps null: false
     end

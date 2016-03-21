@@ -55,6 +55,6 @@ ActiveRecord::Schema.define(version: 20160321210542) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "tags", ["character_id", "photo_id"], name: "index_tags_on_character_id_and_photo_id", unique: true, using: :btree
+  add_index "tags", ["character_id", "photo_id"], name: "index_tags_on_character_id_and_photo_id", using: :btree
 
 end
