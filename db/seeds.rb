@@ -1,5 +1,5 @@
 photo = Photo.create( title: "Wheres Waldo",
-              link: "app/assets/images/ww_giant_image.jpg" )
+              link: "ww_giant_image.jpg" )
 
 Character.create( name: "Waldo" )
 Character.create( name: "Wenda" )
