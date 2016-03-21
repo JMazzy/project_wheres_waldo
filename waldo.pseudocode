@@ -11,16 +11,22 @@ Photo (has_many tags)
 Tag (belongs_to user, belongs_to photo)
   photo_id
   user_id
+  character_id
   photo_x
   photo_y
-  character_name
 
 User (has_many tags)
   user_name
   email
   password
 
-
+Character (has_many tags)
+  name
+seeded with:  Waldo,
+              Wenda,
+              Odlaw,
+              Woof,
+              and Wizard Whitebeard
 
 
 Photo Views
@@ -29,9 +35,9 @@ Photo Views
     big photo
       user click (jQuery click listener)
         create new, absolutely positioned targeting boxes surrounding the click area
-        dropdown with character names
+        dropdown with character names slides out
         when user selects one, the tag is created w/ character name (jQuery click listener)
-        tags are visible on hover, invisible outside of pic
+        tags are visible on hover, invisible outside of pic (jQuery mouseover listener)
 
 
 
