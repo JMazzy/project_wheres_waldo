@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+photo = Photo.create( title: "Wheres Waldo",
+              link: "app/assets/images/ww_giant_image.jpg" )
+
+Character.create( name: "Waldo" )
+Character.create( name: "Wenda" )
+Character.create( name: "Odlaw" )
+Character.create( name: "Woof" )
+Character.create( name: "Wizard Whitebeard" )
+
+Character.all.each do |char|
+  PhotoCharacter.create(  photo_id: photo.id,
+                          character_id: char.id )
+end
