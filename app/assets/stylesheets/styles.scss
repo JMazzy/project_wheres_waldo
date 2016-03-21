@@ -1,0 +1,16 @@
+.photo-holder {
+  position: relative;
+}
+
+#photo {
+  position: absolute;
+  left: 0px;
+  right:0px;
+}
+
+.tag {
+  position: absolute;
+  left: 0px;
+  right:0px;
+  border: 5px solid green;
+}
