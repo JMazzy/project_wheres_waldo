@@ -3,6 +3,11 @@ var WALDO = WALDO || {};
 WALDO.photoTagModule = ( function() {
   var chars;
 
+  var removeCharacter = function(name) {
+    var id = chars.indexOf(name);
+    chars.splice(id, 1);
+  }
+
   var createTag = function(x,y) {
 
     // create new elements
@@ -76,5 +81,6 @@ WALDO.photoTagModule = ( function() {
     createTag: createTag,
     persistTag: persistTag,
     getCharacters: getCharacters,
+    removeCharacter: removeCharacter,
   }
 })();

@@ -1,6 +1,6 @@
 var WALDO = WALDO || {};
 
-WALDO.listenerModule = ( function(tagger, game) {
+WALDO.listenerModule = ( function() {
   var registerListeners = function() {
     $('.photo-holder').on("click", function(e) {
       var offset = $("#photo").offset();
@@ -9,7 +9,7 @@ WALDO.listenerModule = ( function(tagger, game) {
 
       if ( $(e.target).attr('id') === "photo" ) {
         $(".tag-temp").remove();
-        tagger.createTag( x, y );
+        WALDO.photoTagModule.createTag( x, y );
       } else if ( $(e.target).hasClass("tag-menu-item") ) {
         var $menuChoice = $(e.target);
         var choiceString = $menuChoice.text();
@@ -19,8 +19,11 @@ WALDO.listenerModule = ( function(tagger, game) {
         $tag.removeClass("tag-temp");
         $label = $tag.find(".tag-label");
         $label.removeClass("hidden");
+        
         $label.text(choiceString);
-        tagger.persistTag( x, y, $menuChoice.data("id"), game.getCurrentGame() );
+        WALDO.photoTagModule.removeCharacter( choiceString );
+
+        WALDO.photoTagModule.persistTag( x, y, $menuChoice.data("id"), WALDO.GameModule.getCurrentGame() );
       }
     });
 
@@ -42,4 +45,4 @@ WALDO.listenerModule = ( function(tagger, game) {
   return {
     registerListeners: registerListeners,
   }
-})( WALDO.photoTagModule, WALDO.GameModule );
+})();
