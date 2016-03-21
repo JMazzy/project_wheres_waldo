@@ -2,11 +2,20 @@ var WALDO = WALDO || {};
 
 WALDO.photoTagModule = ( function() {
   var registerListeners = function() {
-    $('#photo').on("click", function(e) {
+    $('.photo-holder').on("click", "#photo", function(e) {
       var offset = $("#photo").offset();
       var x = e.pageX - offset.left
       var y = e.pageY - offset.top
       createTag(x,y);
+      console.log(x,y)
+    });
+
+    $("#photo").on("mouseover", function(e) {
+      $(".tag").removeClass("hidden");
+    });
+
+    $("#photo").on("mouseout", function(e) {
+      $(".tag").addClass("hidden");
     });
   };
 
@@ -26,7 +35,10 @@ WALDO.photoTagModule = ( function() {
     $newTag.css({top: y, left: x});
 
     // append new tag to the photo holder
-    $('#photo-holder').append($newTag);
+    $('.photo-holder').append($newTag[0]);
+
+    console.log('createTag running');
+    console.log($newTag[0]);
   };
 
   return {
