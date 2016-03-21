@@ -31,12 +31,11 @@ WALDO.photoTagModule = ( function() {
     $('.photo-holder').append($newTag[0]);
   };
 
-  var persistTag = function(x,y,name) {
-    console.log(x,y,name)
+  var persistTag = function(x,y,charID) {
     $.ajax({
       url: "http://localhost:3000/tags",
       type: "POST",
-      data: JSON.stringify({ tag: { photo_x: x, photo_y: y, character_id: 1, photo_id: 1 }}),
+      data: JSON.stringify({ tag: { photo_x: x, photo_y: y, character_id: charID, photo_id: 1 }}),
       dataType: "json",
       contentType: "application/json",
       success: function(response) {

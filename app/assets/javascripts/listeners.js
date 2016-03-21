@@ -20,7 +20,7 @@ WALDO.listenerModule = ( function() {
         $label = $tag.find(".tag-label");
         $label.removeClass("hidden");
         $label.text(choiceString);
-        WALDO.photoTagModule.persistTag( x, y, $menuChoice.text() );
+        WALDO.photoTagModule.persistTag( x, y, $menuChoice.data("id") );
       }
     });
 
