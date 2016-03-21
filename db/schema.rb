@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321130742) do
+ActiveRecord::Schema.define(version: 20160321210542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 20160321130742) do
   end
 
   add_index "characters", ["name"], name: "index_characters_on_name", unique: true, using: :btree
+
+  create_table "games", force: :cascade do |t|
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "photo_characters", force: :cascade do |t|
     t.integer  "photo_id",     null: false
@@ -42,7 +48,6 @@ ActiveRecord::Schema.define(version: 20160321130742) do
 
   create_table "tags", force: :cascade do |t|
     t.integer  "photo_id",     null: false
-    t.integer  "user_id",      null: false
     t.integer  "character_id", null: false
     t.integer  "photo_x"
     t.integer  "photo_y"
@@ -50,18 +55,6 @@ ActiveRecord::Schema.define(version: 20160321130742) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "tags", ["character_id", "photo_id", "user_id"], name: "index_tags_on_character_id_and_photo_id_and_user_id", unique: true, using: :btree
-
-  create_table "users", force: :cascade do |t|
-    t.string   "user_name",       null: false
-    t.string   "email",           null: false
-    t.string   "password_digest"
-    t.string   "auth_token"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["user_name"], name: "index_users_on_user_name", unique: true, using: :btree
+  add_index "tags", ["character_id", "photo_id"], name: "index_tags_on_character_id_and_photo_id", unique: true, using: :btree
 
 end

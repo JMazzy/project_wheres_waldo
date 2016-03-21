@@ -26,6 +26,12 @@ WALDO.photoTagModule = ( function() {
     $('.photo-holder').append($newTag[0]);
   };
 
+  var persistTag = function(x,y) {
+    $.ajax({
+      url: "http://localhost:3000/"
+    });
+  }
+
   return {
     createTag: createTag,
   }
