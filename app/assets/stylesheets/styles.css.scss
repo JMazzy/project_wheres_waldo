@@ -1,3 +1,5 @@
+$tag-box-size: 64px;
+
 .photo-holder {
   position: relative;
 }
@@ -10,18 +12,28 @@
 
 .tag {
   position: absolute;
-  left: 0px;
-  right:0px;
+  left: 300px;
+  top: 300px;
+}
+
+.tag-box {
+  position: absolute;
+  left: -$tag-box-size/2;
+  top: -$tag-box-size/2;
   border: 5px solid rgba(0,200,0,0.5);
-  width: 100px;
-  height: 100px;
+  width: $tag-box-size;
+  height: $tag-box-size;
   opacity: 50;
 }
 
 .tag-label {
-
+  position: absolute;
 }
 
 .tag-menu {
-  
+  position: absolute;
+}
+
+.hidden {
+  display: none;
 }
