@@ -15,6 +15,15 @@ class GamesController < ApplicationController
       end
     else
       flash[:danger] = "Could not create a game!"
+
+      respond_to do |format|
+
+        format.html
+
+        format.json { render  nothing: true,
+                              status: 400 }
+
+      end
     end
   end
 
@@ -34,6 +43,15 @@ class GamesController < ApplicationController
       end
     else
       flash[:danger] = "Could not end the game!"
+
+      respond_to do |format|
+
+        format.html
+
+        format.json { render  nothing: true,
+                              status: 400 }
+
+      end
     end
 
   end
