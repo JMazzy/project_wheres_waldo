@@ -45,6 +45,8 @@ WALDO.GameModule = ( function() {
         console.log("COMPLETE");
       },
     });
+
+    getHighScores();
   };
 
   var getCurrentGame = function() {
@@ -52,7 +54,24 @@ WALDO.GameModule = ( function() {
   };
 
   var getHighScores = function() {
-
+    $.ajax({
+      url: "http://localhost:3000/games",
+      type: "GET",
+      data: JSON.stringify({}),
+      dataType: "json",
+      contentType: "application/json",
+      success: function(response) {
+        console.log(response);
+        console.log("SUCCESS");
+      },
+      error: function( request, status, error ) {
+        console.log("ERROR");
+        console.log(request, status, error)
+      },
+      complete: function() {
+        console.log("COMPLETE");
+      },
+    });
   };
 
   return {

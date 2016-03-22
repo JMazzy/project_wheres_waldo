@@ -1,5 +1,16 @@
 class GamesController < ApplicationController
 
+  def index
+    @games = Game.all.select("(end_time - created_at) AS duration").order("duration ASC");
+    respond_to do |format|
+
+      format.html
+
+      format.json { render json: @games }
+
+    end
+  end
+
   def create
     @game = Game.new
     if @game.save
