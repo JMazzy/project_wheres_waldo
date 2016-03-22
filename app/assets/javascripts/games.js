@@ -26,8 +26,10 @@ WALDO.GameModule = ( function() {
   };
 
   var finishGame = function() {
+    var urlString = "http://localhost:3000/games/" + currentGame;
+
     $.ajax({
-      url: "http://localhost:3000/games",
+      url: urlString,
       type: "PATCH",
       data: JSON.stringify({ id: currentGame }),
       dataType: "json",

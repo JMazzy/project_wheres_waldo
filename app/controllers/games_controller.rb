@@ -9,8 +9,7 @@ class GamesController < ApplicationController
 
         format.html
 
-        format.json { render  json: @game,
-                              status: :created }
+        format.json { render json: @game }
 
       end
     else
@@ -20,7 +19,7 @@ class GamesController < ApplicationController
 
         format.html
 
-        format.json { render  nothing: true,
+        format.json { render nothing: true,
                               status: 400 }
 
       end
@@ -29,17 +28,15 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.end_time = Time.now;
 
-    if @game.update(game_params)
+    if @game.update( end_time: Time.now )
       flash[:success] = "Game complete!"
 
       respond_to do |format|
 
         format.html
 
-        format.json { render  json: @game,
-                              status: :updated }
+        format.json { render json: @game }
 
       end
     else
