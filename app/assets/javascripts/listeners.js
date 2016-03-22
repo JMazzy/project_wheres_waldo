@@ -20,6 +20,10 @@ WALDO.listenerModule = ( function() {
 
         _tagMenuItemClicked(x, y, $(e.target));
 
+      } else if ( $(e.target).hasClass("delete") ) {
+
+        _deleteButtonClicked($(e.target));
+
       }
     });
   };
@@ -32,17 +36,30 @@ WALDO.listenerModule = ( function() {
 
   var _tagMenuItemClicked = function( x, y, $menuChoice ) {
     var choiceString = $menuChoice.text();
+    var choiceID = $menuChoice.data("id");
+
     $menuChoice.parent().addClass("hidden");
 
-    $tag = $menuChoice.parent().parent();
+    var $tag = $menuChoice.parent().parent();
     $tag.removeClass("tag-temp");
-    $label = $tag.find(".tag-label");
+    var $label = $tag.find(".tag-label");
     $label.removeClass("hidden");
+    $label.attr("data-id", choiceID);
 
     $label.text(choiceString);
     WALDO.photoTagModule.removeCharacter( choiceString );
 
-    WALDO.photoTagModule.persistTag( x, y, $menuChoice.data("id"), WALDO.GameModule.getCurrentGame() );
+    WALDO.photoTagModule.persistTag( $tag, x, y, $menuChoice.data("id"), WALDO.GameModule.getCurrentGame() );
+  };
+
+  var _deleteButtonClicked = function($button) {
+    var $tag = $button.parent();
+    var tagID = $tag.data("id");
+
+    var $label = $tag.find(".tag-label")
+    var charID = $label.data("id");
+
+    WALDO.photoTagModule.deletePersistedTag( $tag, tagID );
   };
 
   var _mouseoverListener = function() {

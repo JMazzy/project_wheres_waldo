@@ -12,7 +12,7 @@ WALDO.photoTagModule = ( function() {
         break;
       }
     }
-    foundChars.push( remainingChars.splice( id, 1 ) );
+    foundChars.push( remainingChars.splice( id, 1 )[0] );
     if ( remainingChars.length === 0 ) {
       WALDO.GameModule.finishGame();
       WALDO.ClockModule.stop();
@@ -27,7 +27,8 @@ WALDO.photoTagModule = ( function() {
         break;
       }
     }
-    remainingChars.push( foundChars.splice( id, 1 ) );
+    console.log(remainingChars, foundChars)
+    remainingChars.push( foundChars.splice( id, 1 )[0] );
   };
 
   var createTag = function(x,y) {
@@ -45,12 +46,12 @@ WALDO.photoTagModule = ( function() {
     }
 
     var $tagLabel = $("<div class='tag-label hidden'></div>")
-    $tagLabel.append("<p class='delete'>x</p>")
 
     //combine new elements under tag
     $newTag.append($tagBox);
     $newTag.append($tagLabel);
     $newTag.append($tagMenu);
+    $newTag.append("<p class='delete hidden'>X</p>");
 
     // put tag in position
     $newTag.css({top: y, left: x});
@@ -59,7 +60,7 @@ WALDO.photoTagModule = ( function() {
     $('.photo-holder').append($newTag[0]);
   };
 
-  var persistTag = function(x,y,charID,game) {
+  var persistTag = function(tag,x,y,charID,game) {
     $.ajax({
       url: "http://localhost:3000/tags",
       type: "POST",
@@ -67,6 +68,8 @@ WALDO.photoTagModule = ( function() {
       dataType: "json",
       contentType: "application/json",
       success: function(response) {
+        tag.attr("data-id", response.id);
+        tag.find(".delete").removeClass("hidden");
         console.log("SUCCESS");
       },
       error: function( request, status, error ) {
@@ -79,20 +82,23 @@ WALDO.photoTagModule = ( function() {
     });
   }
 
-  var deletePersistedTag = function( charID ) {
-    var urlString = "http://localhost:3000/games/" + charID;
+  var deletePersistedTag = function( tag, tagID ) {
+    var urlString = "http://localhost:3000/tags/" + tagID;
     $.ajax({
       url: urlString,
       type: "DELETE",
-      data: JSON.stringify( { id: charID } ),
+      data: JSON.stringify( { id: tagID } ),
       dataType: "json",
       contentType: "application/json",
-      success: function(response) {
+      success: function() {
+        var charName = tag.find(".tag-label").text();
+        addCharacter( charName );
+        tag.remove();
         console.log("SUCCESS");
       },
       error: function( request, status, error ) {
         console.log("ERROR");
-        console.log(request, status, error)
+        console.log(request, status, error);
       },
       complete: function() {
         console.log("COMPLETE");
@@ -127,5 +133,6 @@ WALDO.photoTagModule = ( function() {
     getCharacters: getCharacters,
     removeCharacter: removeCharacter,
     addCharacter: addCharacter,
+    deletePersistedTag: deletePersistedTag,
   }
 })();
