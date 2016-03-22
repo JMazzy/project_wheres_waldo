@@ -9,5 +9,7 @@ Character.create( name: "Wizard Whitebeard" )
 
 Character.all.each do |char|
   PhotoCharacter.create(  photo_id: photo.id,
-                          character_id: char.id )
+                          character_id: char.id,
+                          photo_x: 0,
+                          photo_y: 0 )
 end
