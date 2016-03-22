@@ -5,5 +5,6 @@ $( document ).ready( function() {
     WALDO.listenerModule.registerListeners();
     WALDO.photoTagModule.getCharacters();
     WALDO.GameModule.startGame();
+    WALDO.ClockModule.init();
   }
 });

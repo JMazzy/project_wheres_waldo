@@ -8,9 +8,21 @@
 </head>
 <body id=<%= "#{controller_name}-#{action_name}" %>>
 
-  <main class="container">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          Where's Waldo?
+        </a>
+
+        <p class="navbar-text navbar-right">Elapsed Time: <span id="clock">  </span></p>
+      </div>
+    </div>
+  </nav>
+
+  <!-- <main class="container"> -->
     <%= yield %>
-  </main>
+  <!-- </main> -->
 
 </body>
 </html>
