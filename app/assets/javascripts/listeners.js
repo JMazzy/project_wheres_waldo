@@ -14,19 +14,23 @@ WALDO.listenerModule = ( function() {
 
       if ( $(e.target).attr('id') === "photo" ) {
 
-        $(".tag-temp").remove();
-
-        WALDO.photoTagModule.createTag( x, y );
+        _photoClicked( x, y );
 
       } else if ( $(e.target).hasClass("tag-menu-item") ) {
 
-        _tagMenuItemClicked($(e.target));
-        
+        _tagMenuItemClicked(x, y, $(e.target));
+
       }
     });
   };
 
-  var _tagMenuItemClicked = function( $menuChoice ) {
+  var _photoClicked = function( x, y ) {
+    $(".tag-temp").remove();
+
+    WALDO.photoTagModule.createTag( x, y );
+  }
+
+  var _tagMenuItemClicked = function( x, y, $menuChoice ) {
     var choiceString = $menuChoice.text();
     $menuChoice.parent().addClass("hidden");
 

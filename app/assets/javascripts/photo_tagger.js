@@ -2,7 +2,7 @@ var WALDO = WALDO || {};
 
 WALDO.photoTagModule = ( function() {
   var remainingChars;
-  var foundChars;
+  var foundChars = [];
 
   var removeCharacter = function( name ) {
     var id;
