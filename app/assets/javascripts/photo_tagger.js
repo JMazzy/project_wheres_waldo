@@ -34,9 +34,8 @@ WALDO.photoTagModule = ( function() {
     // create new elements
     var $newTag = $("<div class='tag tag-temp'></div>");
     var $tagBox = $("<div class='tag-box'></div>")
-    var $tagMenu = $("<div class='tag-menu'></div>")
-    var $tagLabel = $("<div class='tag-label hidden'></div>")
 
+    var $tagMenu = $("<div class='tag-menu'></div>")
     for ( var i = 0; i < remainingChars.length; i++ ) {
       var $character = $("<p></p>");
       $character.addClass("tag-menu-item");
@@ -44,6 +43,9 @@ WALDO.photoTagModule = ( function() {
       $character.attr( "data-id", remainingChars[i].id );
       $tagMenu.append($character);
     }
+
+    var $tagLabel = $("<div class='tag-label hidden'></div>")
+    $tagLabel.append("<p class='delete'>x</p>")
 
     //combine new elements under tag
     $newTag.append($tagBox);

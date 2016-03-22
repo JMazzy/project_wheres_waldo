@@ -72,6 +72,19 @@ $tag-box-size: 64px;
   display: none;
 }
 
+.delete {
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  line-height: 10px;
+  background-color: red;
+  color: white;
+}
+
 body {
   padding-top: 50px;
   padding-bottom: 2000px;
