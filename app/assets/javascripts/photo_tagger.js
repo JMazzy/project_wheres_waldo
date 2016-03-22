@@ -3,9 +3,18 @@ var WALDO = WALDO || {};
 WALDO.photoTagModule = ( function() {
   var chars;
 
-  var removeCharacter = function(name) {
-    var id = chars.indexOf(name);
-    chars.splice(id, 1);
+  var removeCharacter = function( name ) {
+    var id;
+    for (var i = 0; i < chars.length; i++) {
+      if (chars[i].name === name) {
+        id = i;
+        break;
+      }
+    }
+    chars.splice( id, 1 );
+    if ( chars.length === 0 ) {
+      WALDO.GameModule.finishGame();
+    }
   }
 
   var createTag = function(x,y) {

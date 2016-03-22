@@ -19,7 +19,7 @@ WALDO.listenerModule = ( function() {
         $tag.removeClass("tag-temp");
         $label = $tag.find(".tag-label");
         $label.removeClass("hidden");
-        
+
         $label.text(choiceString);
         WALDO.photoTagModule.removeCharacter( choiceString );
 
