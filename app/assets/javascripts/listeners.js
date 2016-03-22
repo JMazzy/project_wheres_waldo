@@ -8,6 +8,7 @@ WALDO.listenerModule = ( function() {
 
   var _clickListener = function() {
     $('.photo-holder').on("click", function(e) {
+
       var offset = $("#photo").offset();
       var x = e.pageX - offset.left
       var y = e.pageY - offset.top
@@ -24,6 +25,12 @@ WALDO.listenerModule = ( function() {
 
         _deleteButtonClicked($(e.target));
 
+      }
+    });
+
+    $('.navbar-fixed-top').on("click", function(e) {
+      if ( $(e.target).hasClass("finish-btn") ) {
+        _finishButtonClicked();
       }
     });
   };
@@ -61,6 +68,13 @@ WALDO.listenerModule = ( function() {
 
     WALDO.photoTagModule.deletePersistedTag( $tag, tagID );
   };
+
+  var _finishButtonClicked = function() {
+    WALDO.GameModule.finishGame();
+    WALDO.ClockModule.stop();
+    $(".finish-btn").addClass("hidden");
+    $(".reset-btn").removeClass("hidden");
+  }
 
   var _mouseoverListener = function() {
     $(".photo-holder").on("mouseover", function(e) {

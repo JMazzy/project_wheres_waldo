@@ -51,9 +51,14 @@ WALDO.GameModule = ( function() {
     return currentGame;
   };
 
+  var getHighScores = function() {
+
+  };
+
   return {
     startGame: startGame,
     finishGame: finishGame,
     getCurrentGame: getCurrentGame,
+    getHighScores: getHighScores,
   };
 })();

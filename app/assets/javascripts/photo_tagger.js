@@ -14,8 +14,7 @@ WALDO.photoTagModule = ( function() {
     }
     foundChars.push( remainingChars.splice( id, 1 )[0] );
     if ( remainingChars.length === 0 ) {
-      WALDO.GameModule.finishGame();
-      WALDO.ClockModule.stop();
+      $(".finish-btn").removeClass("hidden");
     }
   };
 
